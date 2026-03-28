@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <div class="header-left">
+            <span class="f1-logo"></span>
+            <div>
+                <h1>Dashboard</h1>
+                <p id="last-updated">Loading...</p>
+            </div>
+        </div>
+        <button id="refresh-btn" onclick="triggerRefresh()">
+            &#8635; Refresh Data
+        </button>
+    </header>
+
+    <!--Navigation Tabs Menu Bar-->
+    <nav>
+        <button class="tab-btn active" onclick="showTab('standings')">Standings</button>
+        <button class="tab-btn" onclick="showTab('results')">Race Results</button>
+        <button class="tab-btn" onclick="showTab('qualifying')">Qualifying</button>
+        <button class="tab-btn" onclick="showTab('laps')">Lap Times</button>
+        <button class="tab-btn" onclick="showTab('pitstops')">Pit Stops</button>
+        <button class="tab-btn" onclick="showTab('weather')">Weather</button>
+    </nav>
+
+    <!--Main Content of Site-->
+
+    <main>
+
+        <!-- STANDINGS TAB -->
+        <section id="tab-standings" class="tab-content active">
+            <div class="split">
+
+                <div class="card">
+                    <h2>Driver Championship</h2>
+                    <div id="driver-standings">
+                        <p class="loading">Loading...</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Constructor Championship</h2>
+                    <div id="constructor-standings">
+                        <p class="loading">Loading...</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RACE RESULTS TAB -->
+        <section id="tab-results" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Race Results</h2>
+                    <select id="results-round-select" onchange="loadRaceResults()">
+                        <option value="">Select a round...</option>
+                    </select>
+                </div>
+                <div id="race-results">
+                    <p class="loading">Select a round to view results</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUALIFYING TAB -->
+        <section id="tab-qualifying" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Qualifying Results</h2>
+                    <select id="qualifying-round-select" onchange="loadQualifying()">
+                        <option value="">Select a round...</option>
+                    </select>
+                </div>
+                <div id="qualifying-results">
+                    <p class="loading">Select a round to view qualifying</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAP TIMES TAB -->
+        <section id="tab-laps" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Lap Times</h2>
+                    <select id="laps-round-select" onchange="loadDriversForRound()">
+                        <option value="">Select a round...</option>
+                    </select>
+                    <select id="laps-driver-select" onchange="loadLapTimes()">
+                        <option value="">Select a driver...</option>
+                    </select>
+                </div>
+                <div id="lap-times">
+                    <p class="loading">Select a round and driver</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PIT STOPS TAB -->
+        <section id="tab-pitstops" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Pit Stops</h2>
+                    <select id="pitstops-round-select" onchange="loadPitStops()">
+                        <option value="">Select a round...</option>
+                    </select>
+                </div>
+                <div id="pit-stops">
+                    <p class="loading">Select a round to view pit stops</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEATHER TAB -->
+        <section id="tab-weather" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Race Weather</h2>
+                    <select id="weather-round-select" onchange="loadWeather()">
+                        <option value="">Select a round...</option>
+                    </select>
+                </div>
+                <div id="weather-data">
+                    <p class="loading">Select a round to view weather</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/static/app.js"></script>
+
+</body>
+</html>

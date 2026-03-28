@@ -1,0 +1,15 @@
+#Ignore Evironmental variables
+.env
+
+#Ignore Virtual environment
+venv/
+
+#FastF1 API cache
+cache/
+
+#Python files
+__pyache__/
+*.pyc
+
+#Mac files
+.DS_Store
